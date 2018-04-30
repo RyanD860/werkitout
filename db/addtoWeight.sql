@@ -1,0 +1,1 @@
+INSERT INTO weight (userid, weight) VALUES ($1, $2);

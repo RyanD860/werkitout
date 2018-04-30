@@ -1,0 +1,1 @@
+UPDATE users SET height = $1, activityLevel = $2 WHERE authid = $3 RETURNING * ;
