@@ -6,7 +6,11 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        <h1> Hello user</h1>
+        {this.props.user.id ? (
+          <h1>{this.props.user.firstname} Profile</h1>
+        ) : (
+          <h1>Users profile</h1>
+        )}
       </div>
     );
   }

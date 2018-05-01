@@ -97,7 +97,10 @@ class AddNewUser extends Component {
           Finish
         </button>
         {this.state.submitted ? (
-          <SubmitAccepted id={this.props.user.id} message="Information saved" />
+          <SubmitAccepted
+            link={`/profile/this.props.user.id`}
+            message="Information saved"
+          />
         ) : (
           false
         )}

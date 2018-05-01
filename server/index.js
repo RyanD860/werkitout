@@ -68,14 +68,8 @@ app.get("/me", function(req, res, next) {
     res.redirect("/login");
   } else {
     userCont.checkForUser(req);
-
-    req.session.user = { id: req.user.id };
-    console.log(req.session);
+    res.redirect(`http://localhost:3000/#/profile`);
   }
-
-  res.redirect("http://localhost:3000/#/profile");
-
-  console.log(req.session.user);
 });
 
 app.get("/api/logout", (req, res, next) => {

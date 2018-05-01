@@ -2,8 +2,9 @@ module.exports = {
   // Gets user once signed in
   checkForUser: function(req, res, next) {
     const db = req.app.get("db");
-
+    req.session.user = { authid: req.user.id };
     db.checkForUser([req.user.id]).then(resp => {
+      req.session.user = { id: resp[0].id, authid: req.user.id };
       if (resp.length < 1) {
         db
           .addUser([
@@ -21,12 +22,12 @@ module.exports = {
 
   getUser: function(req, res, next) {
     const db = req.app.get("db");
-    console.log(req.session.user);
+
     if (req.session.user.id !== 0) {
       db
-        .getUser([req.session.user.id])
+        .getUser(req.session.user.authid)
         .then(resp => {
-          console.log(resp);
+          req.session.user.id = resp[0].id;
           res.status(200).json(resp);
         })
         .catch(res.status(500));

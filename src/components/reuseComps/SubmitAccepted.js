@@ -28,7 +28,7 @@ class SubmitAccepted extends Component {
 
   render() {
     const actions = [
-      <Link to={`/user/profile/${this.props.id}`}>
+      <Link to={this.props.link}>
         <FlatButton label="Profile" primary={true} onClick={this.handleClose} />
       </Link>
     ];
