@@ -1,0 +1,1 @@
+SELECT * from weight where userid = $1 ORDER BY id DESC;

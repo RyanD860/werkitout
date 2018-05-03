@@ -7,11 +7,9 @@ const GET_USER = "GET_USER";
 
 // Get's user information if signed in
 export function getUser() {
-  console.log("check fired");
   return {
     type: GET_USER,
     payload: axios.get("/api/user").then(resp => {
-      console.log(resp.data);
       return resp.data;
     })
   };

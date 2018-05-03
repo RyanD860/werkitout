@@ -11,7 +11,6 @@ class App extends Component {
     this.props.getUser();
   }
   render() {
-    console.log(this.props);
     return (
       <div className="App">
         <MuiThemeProvider>{routes}</MuiThemeProvider>

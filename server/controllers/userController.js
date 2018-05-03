@@ -48,5 +48,17 @@ module.exports = {
           res.json(resp);
         })
     );
+  },
+  getUserWeight: function(req, res, next) {
+    const db = req.app.get("db");
+    db.getUserWeight([req.params.id]).then(resp => {
+      res.json(resp);
+    });
+  },
+  addToUserWeight: function(req, res, next) {
+    const db = req.app.get("db");
+    db.addtoWeight([req.body.id, req.body.weight]).then(resp => {
+      res.json(resp);
+    });
   }
 };

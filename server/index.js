@@ -82,10 +82,12 @@ app.get("/api/logout", (req, res, next) => {
 
 //GET
 app.get("/api/user", userCont.getUser);
+app.get("/api/user/weight/:id", userCont.getUserWeight);
 app.get("/api/exercises", exerciseCont.getExercises);
 
 // POST
 app.post("/api/user/add", userCont.addNewUserInfo);
+app.post("/api/user/weight/add", userCont.addToUserWeight);
 // PUT
 
 // REMOVE
