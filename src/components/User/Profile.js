@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import swal from "sweetalert";
 import LineChart from "../reuseComps/LineChart";
+import Header from "../reuseComps/Header";
 
 class Profile extends Component {
   constructor() {
@@ -40,6 +41,7 @@ class Profile extends Component {
   render() {
     return (
       <div>
+        <Header />
         {this.props.user.id ? (
           <h1>
             {this.props.user.firstname} {this.props.user.lastname}

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Aldrich");
+
 .App {
   text-align: center;
 }
@@ -23,6 +25,35 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  #header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: -1px;
+    width: 100vw;
+    height: 100px;
+  }
+  #header img {
+    width: 100px;
+    height: 100px;
+    padding-right: 30px;
+  }
+  #header h1 {
+    font-size: 2.7em;
+    font-family: "Aldrich", sans-serif;
+    letter-spacing: 10px;
+  }
+  link:visited {
+    color: black;
+  }
 }
