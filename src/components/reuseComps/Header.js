@@ -2,26 +2,19 @@ import React from "react";
 import { withRouter, NavLink, Link } from "react-router-dom";
 
 const Header = () => {
-  const styles = {
-    padding: {
-      padding: "20px",
-      cursor: "pointer"
-    }
-  };
-
   let links = [
-    { title: "Create", link: "/" },
-    { title: "Browse", link: "/" },
-    { title: "Calories", link: "/" },
+    { title: "Create", link: "/create" },
+    { title: "Browse", link: "/browse" },
+    { title: "Calories", link: "/calories" },
     { title: "Profile", link: "/profile" }
   ];
-  let myLinks = links.map(item => {
+  let myLinks = links.map((item, i) => {
     return (
       <NavLink
-        style={styles.padding}
+        key={i}
         exact
         to={item.link}
-        activeStyle={{ color: "red" }}
+        activeStyle={{ borderBottom: "2px solid #4d5ed1", color: "#4d5ed1" }}
       >
         {item.title}
       </NavLink>
