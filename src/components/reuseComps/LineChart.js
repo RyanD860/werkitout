@@ -24,8 +24,7 @@ const LineChart = props => {
   }
   createLabels(props.weight);
   createWeights(props.weight);
-  console.log(labes);
-  console.log(weights.data);
+
   let chartData = {
     labels: labes,
     datasets: [

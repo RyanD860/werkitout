@@ -5,40 +5,36 @@ import { withRouter } from "react-router-dom";
 import swal from "sweetalert";
 import LineChart from "../reuseComps/LineChart";
 import Header from "../reuseComps/Header";
+import { getWeights, addWeight } from "../../ducks/reducer";
 
 class Profile extends Component {
   constructor() {
     super();
 
     this.state = {
-      weights: [],
-      newWeight: 0
+      newWeight: 0,
+      currentWeight: 0
     };
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    axios.get(`/api/user/weight/${nextProps.user.id}`).then(resp => {
-      this.setState({ weights: resp.data });
-    });
+    if (nextProps.user.id !== this.props.user.id) {
+      console.log("From reducer");
+      this.props.getWeights(nextProps.user.id);
+    }
   }
 
   onSubmit() {
     if (this.state.newWeight !== 0) {
-      axios
-        .post("/api/user/weight/add", {
-          id: this.props.user.id,
-          weight: this.state.newWeight
-        })
-        .then(resp => {
-          this.setState({ weights: resp.data });
-        });
+      this.props.addWeight(this.props.user.id, this.state.newWeight);
     } else {
       swal({ text: "Enter a valid weight" });
     }
   }
 
   render() {
+    let curr;
     return (
       <div>
         <Header />
@@ -49,9 +45,12 @@ class Profile extends Component {
         ) : (
           <h1>Users profile</h1>
         )}
-        {this.state.weights.length > 0 ? (
+        {this.props.weights.length > 0 ? (
           <div>
-            <h2>{this.state.weights[0].weight}</h2>
+            {console.log(this.props.weights)}
+            {console.log(this.props.weights.length - 1)}
+
+            <h2>{this.props.weights[this.props.weights.length - 1].weight}</h2>
             <input
               type="text"
               placeholder="Log new weight"
@@ -68,8 +67,8 @@ class Profile extends Component {
         ) : (
           <h2>No weight entered</h2>
         )}
-        {this.state.weights.length > 0 ? (
-          <LineChart weight={this.state.weights} />
+        {this.props.weights.length > 0 ? (
+          <LineChart weight={this.props.weights} />
         ) : (
           false
         )}
@@ -80,4 +79,6 @@ class Profile extends Component {
 
 const mapStateToProps = state => state;
 
-export default withRouter(connect(mapStateToProps)(Profile));
+export default withRouter(
+  connect(mapStateToProps, { getWeights, addWeight })(Profile)
+);
