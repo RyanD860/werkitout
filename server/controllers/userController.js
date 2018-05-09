@@ -3,8 +3,7 @@ module.exports = {
   checkForUser: function(req, res, next) {
     const db = req.app.get("db");
     req.session.user = { authid: req.user.id };
-    db.checkForUser([req.user.id]).then(resp => {
-      req.session.user = { id: resp[0].id, authid: req.user.id };
+    db.checkForUser([req.session.user.id]).then(resp => {
       if (resp.length < 1) {
         db
           .addUser([
@@ -13,9 +12,11 @@ module.exports = {
             req.user.name.givenName
           ])
           .then(resp => {
-            console.log(resp);
+            req.session.user = { id: resp[0].id, authid: req.session.user.id };
           })
-          .catch(console.log("Error when adding user"));
+          .catch(console.log());
+      } else {
+        req.session.user = { id: resp[0].id, authid: req.session.user.id };
       }
     });
   },
@@ -39,11 +40,7 @@ module.exports = {
     const db = req.app.get("db");
     db.addtoWeight([req.body.id, req.body.weight]).then(
       db
-        .addNewUserInfo([
-          req.body.height,
-          req.body.activityLevel,
-          req.session.user.id
-        ])
+        .addNewUserInfo([req.body.height, req.body.age, req.session.user.id])
         .then(resp => {
           res.json(resp);
         })

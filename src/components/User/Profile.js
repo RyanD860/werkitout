@@ -20,7 +20,6 @@ class Profile extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.id !== this.props.user.id) {
-      console.log("From reducer");
       this.props.getWeights(nextProps.user.id);
     }
   }
@@ -57,9 +56,6 @@ class Profile extends Component {
 
         {this.props.weights.length > 0 ? (
           <div>
-            {console.log(this.props.weights)}
-            {console.log(this.props.weights.length - 1)}
-
             <h2>{this.props.weights[this.props.weights.length - 1].weight}</h2>
             <input
               type="text"
