@@ -33,8 +33,15 @@ class Profile extends Component {
     }
   }
 
+  logOut() {
+    axios.get("/api/logout").then(resp => {
+      if ((resp.message = "logged out")) {
+        window.location.href = "/";
+      }
+    });
+  }
+
   render() {
-    let curr;
     return (
       <div>
         <Header />
@@ -45,6 +52,9 @@ class Profile extends Component {
         ) : (
           <h1>Users profile</h1>
         )}
+
+        <button onClick={this.logOut}>Sign Out</button>
+
         {this.props.weights.length > 0 ? (
           <div>
             {console.log(this.props.weights)}

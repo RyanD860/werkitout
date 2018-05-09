@@ -73,9 +73,10 @@ app.get("/me", function(req, res, next) {
 });
 
 app.get("/api/logout", (req, res, next) => {
-  req.session.destroy();
-  next();
-  res.status(200);
+  req.session.destroy(err => {
+    if (err) return next(err);
+    res.send({ message: "logged out" });
+  });
 });
 
 //End Points
