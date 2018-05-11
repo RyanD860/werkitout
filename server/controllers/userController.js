@@ -3,7 +3,7 @@ module.exports = {
   checkForUser: function(req, res, next) {
     const db = req.app.get("db");
     req.session.user = { authid: req.user.id };
-    db.checkForUser([req.session.user.id]).then(resp => {
+    db.checkForUser([req.session.user.authid]).then(resp => {
       if (resp.length < 1) {
         db
           .addUser([
@@ -40,7 +40,7 @@ module.exports = {
     const db = req.app.get("db");
     db.addtoWeight([req.body.id, req.body.weight]).then(
       db
-        .addNewUserInfo([req.body.height, req.body.age, req.session.user.id])
+        .addNewUserInfo([req.body.height, req.body.age, req.body.id])
         .then(resp => {
           res.json(resp);
         })

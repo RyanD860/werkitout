@@ -68,8 +68,7 @@ app.get("/me", function(req, res, next) {
     res.redirect("/login");
   } else {
     userCont.checkForUser(req);
-    console.log(req.session.user);
-    res.redirect(`http://localhost:3000/#/addNewProfile`);
+    res.redirect(`http://localhost:3000/#/profile`);
   }
 });
 

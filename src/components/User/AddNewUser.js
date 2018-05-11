@@ -19,7 +19,7 @@ class AddNewUser extends Component {
     axios
       .post("/api/user/add", {
         id: id,
-        weight: Number(height),
+        weight: Number(weight),
         height: Number(height),
         age: Number(age)
       })
@@ -54,7 +54,7 @@ class AddNewUser extends Component {
               this.props.user.id,
               this.state.weight,
               this.state.height,
-              this.state.activityLevel
+              this.state.age
             )
           }
         >
@@ -62,7 +62,7 @@ class AddNewUser extends Component {
         </button>
         {this.state.submitted ? (
           <SubmitAccepted
-            link={`/profile/this.props.user.id`}
+            link={`/profile/${this.props.user.id}`}
             message="Information saved"
           />
         ) : (
