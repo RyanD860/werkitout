@@ -6,12 +6,14 @@ import Profile from "./components/User/Profile";
 import AddNewUser from "./components/User/AddNewUser";
 import Browse from "./components/Browse/Browse";
 import Calories from "./components/Calories/Calories";
+import Exercise from "./components/Exercise/Exercise";
 
 export default (
   <Switch>
     <Route exact path="/" component={Landing} />
     <Route path="/create" component={Create} />
     <Route path="/browse" component={Browse} />
+    <Route path="/exercise/:id" component={Exercise} />
     <Route path="/calories" component={Calories} />
     <Route path="/profile" component={Profile} />
     <Route path="/addNewProfile" component={AddNewUser} />

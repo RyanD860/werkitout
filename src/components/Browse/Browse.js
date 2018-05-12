@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Header from "../reuseComps/Header";
 import { connect } from "react-redux";
 
@@ -10,11 +10,13 @@ class Browse extends Component {
       (map = this.props.exercises.map((item, i) => {
         return (
           <div key={i}>
-            <img
-              alt="workout"
-              src={item.image}
-              style={{ width: "600px", height: "400px" }}
-            />
+            <Link to={`/exercise/${item.id}`}>
+              <img
+                alt="workout"
+                src={item.image}
+                style={{ width: "600px", height: "400px" }}
+              />
+            </Link>
             <p>{item.name}</p>
             <p>{item.musclegroup}</p>
           </div>

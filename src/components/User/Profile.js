@@ -6,6 +6,7 @@ import swal from "sweetalert";
 import LineChart from "../reuseComps/LineChart";
 import Header from "../reuseComps/Header";
 import { getWeights, addWeight } from "../../ducks/reducer";
+import _ from "lodash";
 
 class Profile extends Component {
   constructor() {
@@ -41,6 +42,10 @@ class Profile extends Component {
   }
 
   render() {
+    let current = _.maxBy(this.props.weights, item => {
+      return item.id;
+    });
+    console.log(current);
     return (
       <div>
         <Header />
@@ -56,7 +61,7 @@ class Profile extends Component {
 
         {this.props.weights.length > 0 ? (
           <div>
-            <h2>{this.props.weights[this.props.weights.length - 1].weight}</h2>
+            <h2>{current ? current.weight : false}</h2>
             <input
               type="text"
               placeholder="Log new weight"

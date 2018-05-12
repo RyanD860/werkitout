@@ -9,6 +9,7 @@
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "express-session": "^1.15.6",
+    "lodash": "^4.17.10",
     "massive": "^4.7.2",
     "material-ui": "^0.20.0",
     "passport": "^0.4.0",
