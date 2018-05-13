@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Header from "../reuseComps/Header";
 import _ from "lodash";
 
@@ -15,6 +15,9 @@ const Exercise = props => {
       <Header />
       {selected ? (
         <div>
+          <Link to="/browse">
+            <p>Back to Browse</p>
+          </Link>
           <h1>{selected.name}</h1>
           <img src={selected.image} /> <p>{selected.description}</p>
           <p>{selected.musclegroup}</p>

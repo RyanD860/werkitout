@@ -79,7 +79,9 @@ class Profile extends Component {
           <h2>No weight entered</h2>
         )}
         {this.props.weights.length > 0 ? (
-          <LineChart weight={this.props.weights} />
+          <div style={{ width: "60%" }}>
+            <LineChart weight={this.props.weights} />
+          </div>
         ) : (
           false
         )}

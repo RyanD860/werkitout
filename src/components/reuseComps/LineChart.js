@@ -38,7 +38,12 @@ const LineChart = props => {
 
   return (
     <div>
-      <Line data={chartData} />
+      <Line
+        data={chartData}
+        width={100}
+        height={400}
+        options={{ maintainAspectRatio: false }}
+      />
     </div>
   );
 };
